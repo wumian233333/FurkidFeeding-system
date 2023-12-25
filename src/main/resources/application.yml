@@ -1,0 +1,22 @@
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/software?serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  thymeleaf:
+    cache: false
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password:
+
+  cache:
+    type: redis
+    redis:
+      time-to-live: 600000
+      key-prefix: redis_cache_key_prefix_
+      cache-null-values: true
