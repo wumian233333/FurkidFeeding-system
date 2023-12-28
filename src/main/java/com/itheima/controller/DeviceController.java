@@ -1,13 +1,15 @@
 package com.itheima.controller;
 
 
+import com.alibaba.fastjson.JSON;
 import com.itheima.domain.Device;
+import com.itheima.domain.User;
 import com.itheima.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/1")
+@RequestMapping("/device")
 public class DeviceController {
     @Autowired
     private DeviceService deviceService;
@@ -32,8 +34,14 @@ public class DeviceController {
         return deviceService.update(device);
     }
     @GetMapping("/{id}")
-    public Device findById(@PathVariable Integer id)
+    public String findById(@PathVariable Integer id)
     {
-        return deviceService.findById(id);
+
+        Device device = deviceService.findById(id);
+        if(device != null)
+        {
+            return JSON.toJSONString( device );
+        }
+        return null;
     }
 }

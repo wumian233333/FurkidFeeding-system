@@ -7,7 +7,7 @@ import com.itheima.domain.User;
 public interface UserMapper  {
     @Select("select * from t_user where id=#{id}")
     public User findById(int id);
-    @Insert("insert into t_user(id,username) values  (#{id},#{username})")
+    @Insert("insert IGNORE into t_user(id,username) values  (#{id},#{username})")
     public int insert(User user);
     @Update("update t_user set username=#{username} where id=#{id}")
     public int update(User user);

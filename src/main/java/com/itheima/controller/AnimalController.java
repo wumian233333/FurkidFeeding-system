@@ -1,12 +1,14 @@
 package com.itheima.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.itheima.domain.Animal;
+import com.itheima.domain.Common;
 import com.itheima.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/animal")
 public class AnimalController {
     @Autowired
     private AnimalService animalService;
@@ -31,8 +33,14 @@ public class AnimalController {
         return animalService.update(anima);
     }
     @GetMapping("/{id}")
-    public Animal  findById(@PathVariable Integer id)
+    public String  findById(@PathVariable Integer id)
     {
-        return animalService.findById(id);
+
+        Animal animal =  animalService.findById(id);
+        if(animal != null)
+        {
+            return JSON.toJSONString( animal );
+        }
+        return null;
     }
 }

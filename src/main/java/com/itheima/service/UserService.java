@@ -6,7 +6,4 @@ public interface UserService {
     Boolean delete(Integer id);
     Boolean update(User user);
     User findById(Integer id);
-
-
-
 }

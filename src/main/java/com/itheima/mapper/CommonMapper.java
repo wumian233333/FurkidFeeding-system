@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.*;
 public interface CommonMapper {
     @Select("select * from t_common where id=#{id}")
     public Common findById(int id);
-    @Insert("insert into t_common(id,text,tiaokuan,yinsi,lianxi) values  (#{id},#{text},#{tiaokuan},#{yinsi},#{lianxi})")
+    @Insert("insert IGNORE into t_common(id,text,tiaokuan,yinsi,lianxi) values  (#{id},#{text},#{tiaokuan},#{yinsi},#{lianxi})")
     public int insert(Common common);
     @Update("update t_common set text=#{text},tiaokuan=#{tiaokuan},yinsi=#{yinsi},lianxi=#{lianxi} where id=#{id}")
     public int update(Common common);

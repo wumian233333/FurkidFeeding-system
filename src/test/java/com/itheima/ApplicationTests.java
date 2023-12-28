@@ -1,5 +1,6 @@
 package com.itheima;
 
+import com.alibaba.fastjson.JSON;
 import com.itheima.domain.User;
 import com.itheima.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
@@ -24,7 +25,8 @@ class ApplicationTests {
         User user = new User();
         user.setId(4);
         user.setUsername("abc");
-        userMapper.update(user);
+        String json= JSON.toJSONString(user);
+        System.out.println(json);
     }
 
     @Test
@@ -36,7 +38,7 @@ class ApplicationTests {
     @Test
     void test3(){
         User user = new User();
-        user.setId(4);
+        user.setId(5);
         user.setUsername("123");
         userMapper.insert(user);
     }

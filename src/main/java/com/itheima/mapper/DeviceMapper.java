@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.*;
 public interface DeviceMapper {
     @Select("select * from t_device where id=#{id}")
     public Device findById(int id);
-    @Insert("insert into t_device(id,shebeihao,xinghao,status) values  (#{id},#{shebeihao},#{xinghao},#{status})")
+    @Insert("insert IGNORE into t_device(id,shebeihao,xinghao,status) values  (#{id},#{shebeihao},#{xinghao},#{status})")
     public int insert(Device device);
     @Update("update t_device set shebeihao=#{shebeihao},xinghao=#{xinghao},status=#{status} where id=#{id}")
     public int update(Device device);

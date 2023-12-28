@@ -1,13 +1,15 @@
 package com.itheima.controller;
 
 
+import com.alibaba.fastjson.JSON;
 import com.itheima.domain.Common;
+import com.itheima.domain.Device;
 import com.itheima.service.CommonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/common")
 public class CommonController {
 
     @Autowired
@@ -33,8 +35,13 @@ public class CommonController {
         return commonService.update(common);
     }
     @GetMapping("/{id}")
-    public Common findById(@PathVariable Integer id)
+    public String findById(@PathVariable Integer id)
     {
-        return commonService.findById(id);
+        Common common = commonService.findById(id);
+        if(common != null)
+        {
+            return JSON.toJSONString( common );
+        }
+        return null;
     }
 }
